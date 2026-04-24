@@ -1,0 +1,3619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thinking OS · Hệ điều hành tư duy CEO Kỷ nguyên AI · Quang Nguyễn · PATI Group</title>
+<meta name="description" content="AIVN Summit #01 · Closing Keynote · Agentic AI at PATI Group · Quang Nguyễn · PATI Group">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   THINKING OS DECK · AIVN SUMMIT #01 · Quang Nguyễn · PATI Group
+   Brand aligned with xLeader Academy · AIVN Summit #01
+   ================================================================ */
+
+:root {
+  --red: #C22620;
+  --red-dark: #8B1A16;
+  --red-light: #FCEBEB;
+  --gold: #D4AF37;
+  --gold-light: #FFFDF0;
+  --gold-bg: #FAF3E0;
+  --dark: #1a1a1a;
+  --text: #333;
+  --text2: #555;
+  --text3: #888;
+  --light: #f8f7f4;
+  --white: #fff;
+  --border: #e0dbd3;
+  --shadow: 0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,.12);
+
+  --pati-green: #54B94A;
+
+  --tbd-bg: #FFF8E1;
+  --tbd-border: #F6B93B;
+  --tbd-text: #B7791F;
+
+  --font-display: 'Oswald', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Aptos Display', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--white);
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: .3px;
+  line-height: 1.2;
+}
+
+/* ================================================================
+   DECK LAYOUT
+   ================================================================ */
+
+.deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+
+.slide {
+  position: absolute; inset: 0;
+  display: none;
+  padding: 5vh 6vw;
+  overflow: hidden;
+  background: var(--white);
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide.bg-light { background: var(--light); }
+.slide.active { display: flex; flex-direction: column; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.slide-inner {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   SHARED COMPONENTS
+   ================================================================ */
+
+.slide-meta {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text3);
+  text-transform: uppercase;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.slide-meta .tier-badge { color: var(--red); font-weight: 700; letter-spacing: 0.2em; }
+.slide-meta .s-num { font-family: var(--font-mono); font-weight: 500; color: var(--text3); letter-spacing: 0.1em; }
+
+.slide-footer {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--text3);
+  text-transform: uppercase;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+.slide-footer .brand { color: var(--red); font-weight: 600; }
+
+.slide-body {
+  flex: 1;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.section-label {
+  display: inline-block;
+  background: var(--red-light);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+h1.slide-title, h2.slide-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 3.4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: 0.3px;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.slide-title .accent { color: var(--red); }
+.slide-title .gold-accent { color: var(--gold); }
+.slide-title em { font-style: normal; color: var(--red); }
+
+.title-en {
+  font-family: var(--font-body);
+  font-weight: 400; font-style: italic;
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  color: var(--text3);
+  margin-bottom: 2rem;
+}
+
+.lede {
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 52em;
+}
+
+.body-text {
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 52em;
+}
+
+.mono { font-family: var(--font-mono); }
+.red { color: var(--red); }
+.red-dark { color: var(--red-dark); }
+.gold { color: var(--gold); }
+.pati { color: var(--pati-green); }
+
+.tbd {
+  display: inline-block;
+  background: var(--tbd-bg);
+  border: 1px dashed var(--tbd-border);
+  color: var(--tbd-text);
+  font-family: var(--font-mono);
+  font-size: 0.85em; font-weight: 600;
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  letter-spacing: 0.03em;
+}
+
+.shift-box {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  padding: 1rem 1.4rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: var(--text);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.shift-box b { color: var(--red-dark); font-style: normal; font-weight: 600; }
+
+/* ================================================================
+   S01 · COVER — xLeader hero
+   ================================================================ */
+
+.cover {
+  padding: 0;
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+  color: var(--white);
+}
+
+.cover::before {
+  content: ''; position: absolute;
+  right: -100px; top: -100px;
+  width: 500px; height: 500px;
+  border: 2px solid rgba(212,175,55,.12);
+  border-radius: 50%;
+}
+
+.cover::after {
+  content: ''; position: absolute;
+  right: 80px; top: 80px;
+  width: 340px; height: 340px;
+  border: 2px solid rgba(212,175,55,.08);
+  border-radius: 50%;
+}
+
+.cover .slide-inner { padding: 5vh 6vw; justify-content: space-between; z-index: 5; }
+
+.cover-top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.cover-top .brand-mark { display: flex; align-items: center; gap: 0.8rem; }
+
+.cover-top .logo-box {
+  width: 32px; height: 32px;
+  background: rgba(212,175,55,.15);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0;
+}
+
+.cover-badge {
+  display: inline-block;
+  background: rgba(212,175,55,.2);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 600;
+  padding: 0.5rem 1.4rem;
+  border-radius: 4px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.cover-center { margin: auto 0; }
+
+.cover-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.8rem, 9vw, 8.5rem);
+  line-height: 0.95;
+  color: var(--white);
+  letter-spacing: 0.3px;
+  margin-bottom: 1rem;
+}
+
+.cover-title .gold-part { color: var(--gold); }
+
+.cover-subtitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  color: rgba(255,255,255,.95);
+  line-height: 1.3;
+  max-width: 30em;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.3px;
+}
+
+.cover-subtitle-en {
+  font-family: var(--font-body);
+  font-weight: 400; font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,.65);
+  max-width: 42em;
+}
+
+.cover-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.cover-speaker-block { max-width: 22em; }
+
+.cover-speaker-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.cover-speaker-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.3px;
+}
+
+.cover-speaker-title {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(255,255,255,.8);
+}
+
+.cover-event {
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  line-height: 1.9;
+}
+
+.cover-event .event-title { color: var(--gold); font-weight: 600; }
+
+/* ================================================================
+   S02 · PAIN CARDS (stat grid)
+   ================================================================ */
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.pain-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
+  border-left: 4px solid var(--red);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  min-height: 13rem;
+}
+
+.pain-card.good { border-left-color: var(--gold); }
+
+.pain-num-bg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 5.5rem;
+  color: var(--red-light);
+  line-height: 1;
+  position: absolute;
+  right: 1rem; top: -0.4rem;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pain-card.good .pain-num-bg { color: var(--gold-bg); }
+
+.pain-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--red);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  position: relative; z-index: 1;
+}
+
+.pain-card.good .pain-label { color: var(--gold); }
+
+.pain-stat {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--dark);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  position: relative; z-index: 1;
+}
+
+.pain-desc {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin-top: auto;
+  position: relative; z-index: 1;
+}
+
+.pain-source {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  margin-top: 0.8rem;
+  position: relative; z-index: 1;
+}
+
+/* ================================================================
+   S03 · DIAGNOSIS
+   ================================================================ */
+
+.big-statement {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  line-height: 1.1;
+  color: var(--dark);
+  max-width: 20em;
+  letter-spacing: 0.3px;
+}
+
+.big-statement .strike {
+  color: var(--text3);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+}
+
+.big-statement em { color: var(--red); font-style: normal; font-weight: 700; }
+
+.statement-en {
+  font-family: var(--font-body);
+  font-weight: 400; font-style: italic;
+  font-size: 1rem;
+  color: var(--text3);
+  margin-top: 1.5rem;
+  max-width: 40em;
+}
+
+.statement-footer {
+  margin-top: 2.5rem;
+  font-size: 1.05rem;
+  color: var(--text);
+  max-width: 44em;
+  line-height: 1.7;
+}
+
+/* ================================================================
+   S04 · THESIS
+   ================================================================ */
+
+.thesis-box { max-width: 30em; }
+
+.thesis-quote {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  line-height: 1.1;
+  color: var(--dark);
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+.thesis-quote::before {
+  content: '"';
+  position: absolute;
+  left: -0.5em; top: -0.3em;
+  font-family: var(--font-display);
+  font-size: 3.5em;
+  color: var(--red-light);
+  font-weight: 700;
+  line-height: 1;
+  z-index: 0;
+}
+
+.thesis-quote > * { position: relative; z-index: 1; }
+.thesis-quote em { color: var(--red); font-style: normal; }
+
+.thesis-attribution {
+  margin-top: 2.5rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   S05 · AGENDA — xLeader tier-card
+   ================================================================ */
+
+.tier-list {
+  display: flex; flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.tier-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.tier-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  background: var(--red);
+}
+
+.tier-card:hover { border-color: var(--gold); box-shadow: var(--shadow-lg); }
+
+.tier-badge-circle {
+  width: 58px; height: 58px;
+  background: var(--red);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+.tier-content { flex: 1; }
+
+.tier-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem; font-weight: 600;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.tier-title-en {
+  font-size: 0.82rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-bottom: 0.6rem;
+}
+
+.tier-desc {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+  max-width: 44em;
+}
+
+.tier-duration {
+  font-family: var(--font-display);
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  background: var(--red-light);
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   S06 · OS ARCHITECTURE
+   ================================================================ */
+
+.os-architecture {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.os-layer {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1.8rem 1.6rem;
+  display: flex; flex-direction: column;
+  min-height: 18rem;
+  position: relative;
+  transition: all 0.25s;
+}
+
+.os-layer:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+
+.os-layer.primary {
+  border-color: var(--red);
+  background: linear-gradient(180deg, var(--red-light) 0%, var(--white) 100%);
+}
+
+.layer-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 500;
+  color: var(--text3);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.os-layer.primary .layer-tag { color: var(--red); font-weight: 600; }
+
+.layer-name-vi {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--dark);
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.os-layer.primary .layer-name-vi { color: var(--red); }
+
+.layer-name-en {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text3);
+  margin-bottom: 1.2rem;
+}
+
+.layer-desc {
+  font-size: 0.94rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.layer-what {
+  margin-top: auto;
+  padding: 0.9rem 1rem;
+  background: var(--light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  font-family: var(--font-display);
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--red-dark);
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+.os-layer.primary .layer-what { background: var(--white); border-left-color: var(--red); color: var(--red-dark); }
+
+.os-callout {
+  margin-top: 2rem;
+  padding: 1.3rem 1.8rem;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.os-callout .gold-text { color: var(--gold); font-weight: 700; }
+
+/* ================================================================
+   S07 / S08 · ELON ALGORITHM
+   ================================================================ */
+
+.algo-header {
+  display: flex; align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.algo-count-badge {
+  width: 72px; height: 72px;
+  background: var(--red);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700;
+}
+
+.algo-list {
+  display: flex; flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.algo-step {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  transition: all 0.2s;
+}
+
+.algo-step:hover { border-color: var(--gold); }
+
+.algo-step-num {
+  width: 36px; height: 36px;
+  background: var(--red);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 700;
+  flex-shrink: 0;
+}
+
+.algo-step-main {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.2px;
+}
+
+.algo-step-en {
+  font-family: var(--font-body);
+  font-size: 0.78rem; font-style: italic;
+  color: var(--text3);
+  margin-bottom: 0.6rem;
+}
+
+.algo-step-example {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.55;
+  padding: 0.5rem 0.8rem 0.5rem 0.9rem;
+  border-left: 2px solid var(--gold);
+  background: var(--light);
+  border-radius: 0 4px 4px 0;
+  margin-top: 0.3rem;
+}
+
+.algo-step-example .tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+
+/* ================================================================
+   S09 · PRINCIPLES MAP
+   ================================================================ */
+
+.principles-map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.principle-card {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--red);
+  border-radius: 12px;
+  padding: 1.4rem 1.1rem;
+  display: flex; flex-direction: column;
+  min-height: 13rem;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.principle-card:hover {
+  background: var(--white);
+  border-color: var(--gold);
+  border-top-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.principle-num-big {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: var(--red-light);
+  line-height: 1;
+  position: absolute;
+  right: 0.8rem; top: 0.5rem;
+}
+
+.principle-card:hover .principle-num-big { color: var(--gold-bg); }
+
+.principle-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+
+.principle-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2px;
+  position: relative; z-index: 1;
+}
+
+.principle-en-label {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--text2);
+  line-height: 1.4;
+  margin-top: auto;
+  position: relative; z-index: 1;
+}
+
+/* ================================================================
+   S10-S13 · PRINCIPLE DEEP DIVES
+   ================================================================ */
+
+.principle-slide {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.principle-hero {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
+  border-right: 1px solid var(--border);
+}
+
+.principle-index {
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.25em;
+  margin-bottom: 1rem;
+  background: var(--red-light);
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  display: inline-block;
+  width: max-content;
+}
+
+.principle-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 4.8vw, 4rem);
+  line-height: 1;
+  color: var(--dark);
+  letter-spacing: 0.3px;
+  margin-bottom: 0.8rem;
+}
+
+.principle-title em { color: var(--red); font-style: normal; }
+.principle-title .gold-em { color: var(--gold); font-style: normal; }
+
+.principle-title-en {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text3);
+  margin-bottom: 1.5rem;
+}
+
+.principle-tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  color: var(--red-dark);
+  line-height: 1.4;
+  max-width: 22em;
+  letter-spacing: 0.2px;
+}
+
+.principle-detail { }
+
+.principle-block {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 0.8rem;
+  border-left: 3px solid var(--red);
+}
+
+.principle-block:last-child { margin-bottom: 0; border-left-color: var(--gold); }
+
+.block-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.principle-block:last-child .block-label { color: var(--gold); }
+
+.block-content {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.block-content .highlight { color: var(--dark); font-weight: 600; }
+.block-content em { color: var(--red); font-style: normal; font-weight: 600; }
+
+/* ================================================================
+   S11 · ASSET SECOND — 100 vs 99
+   ================================================================ */
+
+.gap-display {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  font-family: var(--font-display);
+}
+
+.gap-num {
+  font-weight: 700;
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  line-height: 1;
+}
+
+.gap-num.full { color: var(--red); }
+.gap-num.partial { color: var(--text3); text-decoration: line-through; text-decoration-color: var(--gold); text-decoration-thickness: 4px; }
+
+.gap-vs {
+  font-size: 1.3rem;
+  color: var(--text3);
+  font-family: var(--font-body);
+  font-style: italic;
+  align-self: center;
+}
+
+.gap-insight {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  color: var(--dark);
+  line-height: 1.3;
+  max-width: 20em;
+  margin-top: 0.8rem;
+}
+
+.gap-insight em { color: var(--red); font-style: normal; }
+
+/* Example cards for S11 · 100% vs 99% (Jobs Gorilla Glass, Jensen RIVA 128) */
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  margin-top: 1.2rem;
+}
+
+.example-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-top: 3px solid var(--red);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: all 0.25s;
+}
+
+.example-card.vn { border-top-color: var(--gold); }
+.example-card:hover { border-color: var(--gold); box-shadow: var(--shadow); transform: translateY(-2px); }
+
+.example-label {
+  font-family: var(--font-display);
+  font-size: 0.66rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.example-card.vn .example-label { color: var(--gold); }
+
+.example-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--dark);
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  margin-bottom: 0.2rem;
+}
+
+.example-deed {
+  font-size: 0.84rem;
+  color: var(--text);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.example-counter {
+  font-size: 0.76rem;
+  color: var(--text2);
+  line-height: 1.5;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+  font-style: italic;
+}
+
+.example-counter b { color: var(--red-dark); font-style: normal; font-weight: 600; }
+
+/* ================================================================
+   S12 · 1-3-1 FRAMEWORK
+   ================================================================ */
+
+.framework-diagram {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1.2rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
+}
+
+.fw-col {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1.3rem;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+
+.fw-col.problem { border-top: 4px solid var(--red); }
+.fw-col.middle { border-top: 4px solid var(--gold); }
+.fw-col.proposal { border-top: 4px solid var(--red); }
+
+.fw-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.fw-count {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3.5rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.fw-col.middle .fw-count { color: var(--gold); }
+
+.fw-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin-bottom: 0.7rem;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+
+.fw-desc {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.fw-solutions-list {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.fw-solutions-list li {
+  font-size: 0.82rem;
+  color: var(--text);
+  padding: 0.5rem 0.8rem;
+  background: var(--light);
+  border-radius: 6px;
+  border-left: 2px solid var(--gold);
+  line-height: 1.5;
+}
+
+.fw-solutions-list li b {
+  font-family: var(--font-display);
+  color: var(--red);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+
+/* ================================================================
+   S13 · WHO NOT HOW + 80/20
+   ================================================================ */
+
+.split-principles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.split-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-top: 4px solid var(--red);
+  border-radius: 14px;
+  padding: 2rem 1.8rem;
+  transition: all 0.25s;
+}
+
+.split-card:hover { border-color: var(--gold); border-top-color: var(--gold); box-shadow: var(--shadow-lg); }
+
+.split-index {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.split-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  color: var(--dark);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2px;
+}
+
+.split-title em { color: var(--red); font-style: normal; }
+
+.split-en {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--text3);
+  margin-bottom: 1.5rem;
+}
+
+.split-body {
+  font-size: 0.94rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.split-pati {
+  padding: 1rem 1.2rem;
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88rem;
+  color: var(--red-dark);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.split-pati::before {
+  content: 'PATI ›  ';
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.1em;
+}
+
+/* ================================================================
+   S14 · PATI INTRO
+   ================================================================ */
+
+.pati-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.pati-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--dark);
+  letter-spacing: 0.3px;
+}
+
+.pati-hero-title em { color: var(--red); font-style: normal; }
+
+.pati-hero-sub {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  color: var(--text);
+  margin-top: 1rem;
+  max-width: 24em;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.pati-hero-sub em { color: var(--red); font-style: normal; }
+
+.pati-facts {
+  list-style: none;
+  background: var(--white);
+  border: 1.5px solid var(--gold);
+  border-radius: 14px;
+  padding: 0.5rem 1.6rem;
+}
+
+.pati-facts li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.2rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.pati-facts li:last-child { border-bottom: none; }
+
+.pati-facts .fact-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pati-facts .fact-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--dark);
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.pati-facts .fact-value .sub {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-top: 0.2rem;
+  letter-spacing: 0;
+}
+
+/* ================================================================
+   S15 · ROOT PROBLEM
+   ================================================================ */
+
+.problem-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.eq-term {
+  text-align: center;
+  padding: 1.2rem 1.8rem;
+  min-width: 11rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+}
+
+.eq-term.people { border-top: 4px solid var(--dark); }
+.eq-term.scale { border-top: 4px solid var(--red); }
+.eq-term.result { border-top: 4px solid var(--gold); }
+
+.eq-big {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 5vw, 4.2rem);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.eq-term.people .eq-big { color: var(--dark); }
+.eq-term.scale .eq-big { color: var(--red); }
+.eq-term.result .eq-big { color: var(--gold); }
+
+.eq-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text2);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.eq-op {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--red);
+  line-height: 1;
+}
+
+.problem-hypothesis {
+  margin-top: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: var(--gold-light);
+  border: 1.5px solid var(--gold);
+  border-radius: 12px;
+}
+
+.hyp-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.hyp-text {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  color: var(--dark);
+  line-height: 1.4;
+  max-width: 44em;
+  letter-spacing: 0.2px;
+}
+
+.hyp-text em { color: var(--red); font-style: normal; }
+
+/* ================================================================
+   S16 · PAPERCLIP ORG CHART
+   ================================================================ */
+
+.org-chart {
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 1rem;
+}
+
+.org-node {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.5rem;
+  min-width: 11rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.org-node:hover { border-color: var(--gold); }
+
+.org-node.orchestrator {
+  border: 2px solid var(--red);
+  background: linear-gradient(180deg, var(--red-light) 0%, var(--white) 100%);
+  min-width: 15rem;
+}
+
+.org-node.orchestrator .node-name { color: var(--red); font-size: 1.4rem; }
+
+.node-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--dark);
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.2px;
+}
+
+.node-role {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.node-model {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-top: 0.4rem;
+}
+
+.org-line { width: 1.5px; height: 2rem; background: var(--red); }
+
+.org-branch {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  padding-top: 2rem;
+}
+
+.org-branch::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1.5px;
+  background: var(--red);
+}
+
+.org-branch .agent-col { display: flex; flex-direction: column; align-items: center; position: relative; }
+
+.org-branch .agent-col::before {
+  content: '';
+  width: 1.5px; height: 2rem;
+  background: var(--red);
+  position: absolute;
+  top: 0;
+}
+
+.org-node.agent-node { padding: 0.8rem 1rem; min-width: 9.5rem; }
+.org-node.agent-node .node-name { font-size: 1.05rem; }
+
+/* ================================================================
+   S17-S22 · INDIVIDUAL AGENT SLIDES
+   ================================================================ */
+
+.agent-slide {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.agent-hero {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
+  border-right: 1px solid var(--border);
+}
+
+.agent-index-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: max-content;
+  margin-bottom: 1.2rem;
+}
+
+.agent-index-num {
+  width: 44px; height: 44px;
+  background: var(--red);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700;
+}
+
+.agent-index-label {
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.agent-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 0.95;
+  color: var(--red);
+  letter-spacing: 0.3px;
+  margin-bottom: 0.8rem;
+}
+
+.agent-role {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  color: var(--dark);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.agent-role-en {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--text3);
+}
+
+.agent-detail { }
+
+.agent-spec-list {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 0.7rem;
+}
+
+.agent-spec-list li {
+  background: var(--light);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  border-left: 3px solid var(--red);
+  display: flex; flex-direction: column;
+  gap: 0.25rem;
+}
+
+.agent-spec-list li:last-child { border-left-color: var(--gold); background: var(--gold-light); }
+
+.spec-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.agent-spec-list li:last-child .spec-label { color: var(--gold); }
+
+.spec-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--dark);
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.spec-value.metric {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.spec-value.code {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--red-dark);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* ================================================================
+   S23 · INFRASTRUCTURE STACK
+   ================================================================ */
+
+.stack-diagram {
+  display: flex; flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.stack-layer {
+  display: grid;
+  grid-template-columns: 9rem 1fr 9rem;
+  align-items: center;
+  padding: 1.1rem 1.6rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  gap: 1.5rem;
+  transition: all 0.2s;
+}
+
+.stack-layer:hover { border-color: var(--gold); }
+
+.stack-layer.highlight {
+  border-color: var(--red);
+  background: linear-gradient(90deg, var(--red-light) 0%, var(--white) 40%);
+}
+
+.stack-layer-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.stack-layer-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--dark);
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+
+.stack-layer-name .sub {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-top: 0.2rem;
+  letter-spacing: 0;
+}
+
+.stack-layer-host {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--gold);
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   S24 · SPRINT STORY
+   ================================================================ */
+
+.sprint-story {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.sprint-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--dark);
+  letter-spacing: 0.3px;
+  margin-bottom: 1rem;
+}
+
+.sprint-headline .num { color: var(--red); }
+
+.sprint-sub {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--text);
+  line-height: 1.45;
+  max-width: 26em;
+  letter-spacing: 0.2px;
+}
+
+.sprint-sub em { color: var(--red); font-style: normal; }
+
+.sprint-timeline {
+  display: flex; flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sprint-step {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1.2rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  align-items: baseline;
+  border-left: 3px solid var(--red);
+}
+
+.sprint-step:last-child { border-left-color: var(--gold); background: var(--gold-light); }
+
+.sprint-time {
+  font-family: var(--font-display);
+  font-size: 0.88rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.05em;
+}
+
+.sprint-step:last-child .sprint-time { color: var(--red-dark); }
+
+.sprint-event { font-size: 0.92rem; color: var(--text); line-height: 1.5; }
+.sprint-event .main {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.2px;
+}
+
+/* ================================================================
+   S25 · FAILURE MODES
+   ================================================================ */
+
+.failure-wrapper {
+  display: flex; flex-direction: column;
+  max-width: 72em;
+  margin: 0 auto;
+}
+
+.failure-quote {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  color: var(--dark);
+  line-height: 1.35;
+  padding: 1.5rem 2rem;
+  background: var(--light);
+  border-left: 4px solid var(--red);
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.2px;
+}
+
+.failure-quote em { color: var(--red); font-style: normal; }
+
+.failure-case {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.failure-col {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1.6rem;
+}
+
+.failure-col.fail { border-top: 4px solid var(--red); }
+.failure-col.lesson { border-top: 4px solid var(--gold); }
+
+.failure-col-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.failure-col.fail .failure-col-label { color: var(--red); }
+.failure-col.lesson .failure-col-label { color: var(--gold); }
+
+.failure-col p { font-size: 0.94rem; color: var(--text); line-height: 1.65; margin-bottom: 0.7rem; }
+.failure-col p:last-child { margin-bottom: 0; }
+.failure-col p.main {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1.1rem;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.failure-col p em { color: var(--red); font-style: normal; font-weight: 600; }
+
+/* ================================================================
+   S26 · DASHBOARD RESULTS
+   ================================================================ */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.metric-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-top: 4px solid var(--red);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  display: flex; flex-direction: column;
+  min-height: 13rem;
+  transition: all 0.25s;
+}
+
+.metric-card:hover { border-color: var(--gold); border-top-color: var(--gold); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+.metric-card .metric-category {
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.metric-card .metric-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  line-height: 1;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.2px;
+}
+
+.metric-card .metric-value .tbd { font-size: 0.8em; }
+
+.metric-card .metric-desc {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin-top: auto;
+}
+
+.metric-card .metric-compare {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text3);
+  letter-spacing: 0.03em;
+  margin-top: 0.5rem;
+}
+
+.dashboard-note {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--tbd-text);
+  letter-spacing: 0.15em;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.8rem;
+  background: var(--tbd-bg);
+  border: 1px dashed var(--tbd-border);
+  border-radius: 6px;
+}
+
+/* ================================================================
+   S27-S28 · AI FLUENCY AT PARITY
+   ================================================================ */
+
+.parity-statement {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--dark);
+  letter-spacing: 0.3px;
+  max-width: 20em;
+}
+
+.parity-statement em { color: var(--red); font-style: normal; }
+
+.parity-def {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--gold-light);
+  border: 1.5px solid var(--gold);
+  border-radius: 12px;
+  max-width: 48em;
+}
+
+.parity-def .def-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.parity-def .def-text {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--dark);
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+.parity-def .def-text em { color: var(--red); font-style: normal; }
+
+.parity-ladder {
+  display: flex; flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.ladder-step {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 9rem;
+  gap: 1.5rem;
+  padding: 1.3rem 1.6rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.ladder-step:hover { border-color: var(--gold); }
+
+.ladder-step.current {
+  background: linear-gradient(90deg, var(--red-light) 0%, var(--white) 50%);
+  border-color: var(--red);
+  border-left: 4px solid var(--red);
+}
+
+.ladder-num {
+  width: 52px; height: 52px;
+  background: var(--red-light);
+  color: var(--red);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ladder-step.current .ladder-num { background: var(--red); color: var(--gold); }
+
+.ladder-content .ladder-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.2px;
+}
+
+.ladder-content .ladder-name-en {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--text3);
+  margin-bottom: 0.4rem;
+}
+
+.ladder-content .ladder-desc {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 34em;
+}
+
+.ladder-status {
+  font-family: var(--font-display);
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--text3);
+  background: var(--light);
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+}
+
+.ladder-step.current .ladder-status { color: var(--red); background: var(--red-light); }
+
+/* ================================================================
+   S29 · MONDAY ACTIONS
+   ================================================================ */
+
+.monday-list {
+  display: flex; flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.monday-item {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 1.8rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-left: 5px solid var(--red);
+  border-radius: 12px;
+  align-items: center;
+  transition: all 0.25s;
+}
+
+.monday-item:hover { border-color: var(--gold); border-left-color: var(--gold); box-shadow: var(--shadow); }
+
+.monday-num-circle {
+  width: 56px; height: 56px;
+  background: var(--red);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700;
+}
+
+.monday-action {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.2px;
+}
+
+.monday-desc {
+  font-size: 0.94rem;
+  color: var(--text);
+  line-height: 1.55;
+  max-width: 44em;
+}
+
+.monday-desc .tag {
+  display: inline-block;
+  background: var(--red-light);
+  font-family: var(--font-display);
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  margin-right: 0.6rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   S30 · CLOSING — red hero
+   ================================================================ */
+
+.closing {
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+  color: var(--white);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: ''; position: absolute;
+  right: -150px; top: -150px;
+  width: 600px; height: 600px;
+  border: 2px solid rgba(212,175,55,.1);
+  border-radius: 50%;
+}
+
+.closing::after {
+  content: ''; position: absolute;
+  left: -100px; bottom: -100px;
+  width: 400px; height: 400px;
+  border: 2px solid rgba(212,175,55,.08);
+  border-radius: 50%;
+}
+
+.closing .slide-inner { padding: 5vh 6vw; justify-content: center; align-items: center; z-index: 5; }
+
+.closing .slide-meta, .closing .slide-footer { color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.15); }
+.closing .slide-meta .tier-badge { color: var(--gold); }
+
+.closing .slide-body { justify-content: center; align-items: center; text-align: center; padding: 0; }
+
+.closing-quote {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  line-height: 1.1;
+  color: var(--white);
+  letter-spacing: 0.3px;
+  max-width: 20em;
+  margin: 0 auto 2rem;
+}
+
+.closing-quote em { color: var(--gold); font-style: normal; }
+.closing-quote .break { display: block; }
+
+.closing-sig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+  padding: 0.7rem 1.5rem;
+  background: rgba(212,175,55,.15);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.closing-sig .name { color: var(--white); }
+
+/* ================================================================
+   S31 · Q&A + CONTACT
+   ================================================================ */
+
+.qa-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  height: 100%;
+  align-items: center;
+}
+
+.qa-left { padding-right: 2rem; border-right: 1px solid var(--border); }
+
+.qa-left .qa-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 1;
+  color: var(--dark);
+  letter-spacing: 0.3px;
+  margin-bottom: 1rem;
+}
+
+.qa-left .qa-title em { color: var(--red); font-style: normal; }
+
+.qa-subtitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--text);
+  line-height: 1.45;
+  max-width: 22em;
+  letter-spacing: 0.2px;
+}
+
+.qa-subtitle em { color: var(--red); font-style: normal; }
+
+.contact-list {
+  list-style: none;
+  background: var(--white);
+  border: 1.5px solid var(--gold);
+  border-radius: 14px;
+  padding: 0.5rem 1.6rem;
+}
+
+.contact-list li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.contact-list li:last-child { border-bottom: none; }
+
+.contact-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.contact-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--dark);
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+}
+
+.contact-value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--gold); }
+.contact-value a:hover { color: var(--red); border-color: var(--red); }
+
+.contact-value.mono { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 500; }
+
+/* ================================================================
+   NAV CONTROLS
+   ================================================================ */
+
+.controls {
+  position: fixed; bottom: 1.2rem; right: 1.5rem;
+  z-index: 50;
+  display: flex; gap: 0.5rem;
+}
+
+.controls .ctrl-btn {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  color: var(--text2);
+  width: 2.4rem; height: 2.4rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.controls .ctrl-btn:hover { border-color: var(--red); color: var(--red); }
+
+.slide-counter {
+  position: fixed; bottom: 1.6rem; left: 1.5rem;
+  z-index: 50;
+  font-family: var(--font-display);
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--text3);
+  letter-spacing: 0.15em;
+  background: var(--white);
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.slide-counter .current { color: var(--red); }
+
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px;
+  background: var(--red);
+  z-index: 100;
+  transition: width 0.3s ease;
+}
+
+/* ================================================================
+   PRINT STYLES (PDF backup)
+   ================================================================ */
+
+@media print {
+  @page { size: 1600px 900px; margin: 0; }
+  html, body { overflow: visible; height: auto; background: white; }
+  .controls, .slide-counter, .progress-bar { display: none !important; }
+  .deck { width: 1600px; height: auto; }
+  .slide {
+    display: flex !important;
+    position: relative;
+    width: 1600px; height: 900px;
+    page-break-after: always;
+    page-break-inside: avoid;
+    animation: none;
+  }
+  .slide.active { display: flex; }
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 1200px) {
+  .slide { padding: 4vh 5vw; }
+  .pain-grid { grid-template-columns: repeat(2, 1fr); }
+  .principles-map { grid-template-columns: repeat(3, 1fr); }
+  .os-architecture { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .principle-slide, .agent-slide, .pati-intro, .sprint-story, .qa-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .principle-hero, .agent-hero, .qa-left {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+<div class="slide-counter"><span class="current" id="current-slide">01</span> / 28</div>
+<div class="controls">
+  <div class="ctrl-btn" onclick="prevSlide()">‹</div>
+  <div class="ctrl-btn" onclick="nextSlide()">›</div>
+</div>
+
+<div class="deck">
+
+<!-- S01 · COVER -->
+<section class="slide cover active" data-slide="1">
+  <div class="slide-inner">
+    <div class="cover-top">
+      <div class="brand-mark">
+        <div class="logo-box">PG</div>
+        <div>PATI GROUP · AGENTIC AI</div>
+      </div>
+      <div>AIVN SUMMIT #01 · CLOSING KEYNOTE</div>
+    </div>
+    <div class="cover-center">
+      <div class="cover-badge">Hệ điều hành tư duy CEO Kỷ nguyên AI</div>
+      <h1 class="cover-title">Thinking <span class="gold-part">OS</span></h1>
+      <div class="cover-subtitle">Cách CEO SME Việt update Lõi Tư Duy — không chỉ update công cụ.</div>
+      <div class="cover-subtitle-en">A New Operating System for SME Leaders in the AI Era</div>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-speaker-block">
+        <div class="cover-speaker-label">Speaker · Closing Keynote</div>
+        <div class="cover-speaker-name">Quang Nguyễn</div>
+        <div class="cover-speaker-title">CEO · PATI Group</div>
+      </div>
+      <div class="cover-event">
+        <div class="event-title">AIVN SUMMIT #01</div>
+        <div>HÀ NỘI · 25—26.04.2026</div>
+        <div>AGENTIC AI AT PATI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S02 · MACRO PARADOX -->
+<section class="slide bg-light" data-slide="2">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER I</span> · BỐI CẢNH</div>
+      <div class="s-num">S.02 / CONTEXT</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Vietnam AI 2026 · vs SEA</div>
+      <h1 class="slide-title">Việt Nam <span class="accent">chạy nhanh</span>. Việt Nam chưa <span class="accent">đi sâu</span>.</h1>
+      <div class="title-en">Fast on adoption. Shallow on maturity. The paradox of Vietnam AI.</div>
+      <div class="shift-box" style="max-width: none; margin-bottom: 1.3rem;">
+        <b>AI Tự chủ là General-Purpose Technology</b> — cùng hạng với điện năng và Internet. Khác biệt: <em>độ trễ lần này đắt gấp nhiều lần kỷ nguyên Internet</em>. Chờ thêm không phải "an toàn" — là đang nén rủi ro vào bản thân. <span style="color:var(--text2); font-style:italic;">Executive Dossier · McKinsey + MIT Sloan, 2026.</span>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card good">
+          <div class="pain-num-bg">01</div>
+          <div class="pain-label">Tăng trưởng user</div>
+          <div class="pain-stat">48×</div>
+          <div class="pain-desc">Số người dùng AI Việt Nam tăng 48 lần từ 2023 → 2024 — thuộc top toàn cầu.</div>
+          <div class="pain-source">INVEST VIETNAM · 2026</div>
+        </div>
+        <div class="pain-card good">
+          <div class="pain-num-bg">02</div>
+          <div class="pain-label">SME đã dùng AI</div>
+          <div class="pain-stat">65%</div>
+          <div class="pain-desc">SME Việt đã chạm công cụ AI năm 2024 — thuộc hàng cao nhất SEA.</div>
+          <div class="pain-source">INVEST VIETNAM · 2026</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num-bg">03</div>
+          <div class="pain-label">Thiếu năng lực</div>
+          <div class="pain-stat">55%</div>
+          <div class="pain-desc">Doanh nghiệp Việt nói thiếu người có kỹ năng là rào cản số 1 để mở rộng AI.</div>
+          <div class="pain-source">AWS · 2025</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num-bg">04</div>
+          <div class="pain-label">Workforce sẵn sàng</div>
+          <div class="pain-stat">24%</div>
+          <div class="pain-desc">Chỉ 24% doanh nghiệp tự tin đội ngũ đã sẵn sàng cho kỷ nguyên AI.</div>
+          <div class="pain-source">AWS · 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S03 · DIAGNOSIS -->
+<section class="slide" data-slide="3">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER I</span> · BỐI CẢNH</div>
+      <div class="s-num">S.03 / DIAGNOSIS</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Diagnosis · Chẩn đoán</div>
+      <div class="big-statement">
+        Vấn đề không ở <span class="strike">công cụ</span>.<br>
+        Vấn đề ở <em>tư duy</em>.
+      </div>
+      <div class="statement-en">The problem isn't the tools. Tools are abundant. The problem is the operating system behind them.</div>
+      <div class="statement-footer">
+        CEO SME Việt có đủ ChatGPT, đủ Claude, đủ n8n, đủ Zapier. Nhưng 90% dừng ở <em>10% bề mặt</em> — chat, tóm tắt, vài bài content. <em>90% giá trị thật</em> nằm <b>dưới mặt nước</b>: quy trình tự chủ, chuỗi cung ứng thông minh, quyết định real-time, tích hợp hệ thống cốt lõi. Công cụ không cứu được tảng băng chìm — tư duy mới cứu được.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S04 · THESIS -->
+<section class="slide bg-light" data-slide="4">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER I</span> · BỐI CẢNH</div>
+      <div class="s-num">S.04 / THESIS</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Thesis · Luận đề</div>
+      <div class="thesis-box">
+        <div class="thesis-quote">
+          CEO không cần <em>app AI</em> mới.<br>
+          CEO cần <em>hệ điều hành tư duy</em> mới.
+        </div>
+        <div class="thesis-attribution">— Thinking OS · Tier I Close</div>
+      </div>
+      <div style="margin-top: 1.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; max-width: 60em; margin-left: auto; margin-right: auto;">
+        <div style="background:var(--white); border:1.5px solid var(--border); border-top: 4px solid var(--text3); border-radius: 12px; padding: 1.1rem 1.3rem;">
+          <div style="font-family:var(--font-display); font-size:0.68rem; font-weight:700; color:var(--text3); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.4rem;">Generative AI · Hôm qua</div>
+          <div style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:0.6rem;">Assistance</div>
+          <ul style="list-style:none; padding:0; font-size:0.87rem; line-height:1.85; color:var(--text);">
+            <li>· Liên tục đưa câu lệnh</li>
+            <li>· Tạo nội dung / văn bản</li>
+            <li>· Cải thiện tăng dần</li>
+          </ul>
+        </div>
+        <div style="background:var(--white); border:1.5px solid var(--border); border-top: 4px solid var(--red); border-radius: 12px; padding: 1.1rem 1.3rem;">
+          <div style="font-family:var(--font-display); font-size:0.68rem; font-weight:700; color:var(--red); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.4rem;">Agentic AI · Hôm nay</div>
+          <div style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:0.6rem;">Autonomy</div>
+          <ul style="list-style:none; padding:0; font-size:0.87rem; line-height:1.85; color:var(--text);">
+            <li>· Đặt mục tiêu, agent tự lập kế hoạch</li>
+            <li>· Thực thi toàn bộ tác vụ</li>
+            <li>· Tăng trưởng theo cấp số nhân</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shift-box" style="margin-top: 1.3rem; max-width: 60em; margin-left: auto; margin-right: auto;">
+        <b>Đừng dùng công nghệ tương lai để giải quyết KPI quá khứ.</b> <span style="color:var(--text2);">— Executive Dossier · McKinsey + MIT Sloan, 2026.</span>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S05 · AGENDA -->
+<section class="slide" data-slide="5">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER I</span> · BỐI CẢNH</div>
+      <div class="s-num">S.05 / AGENDA</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Agenda · Hành trình 90 phút</div>
+      <h2 class="slide-title">4 tầng <span class="accent">Thinking OS</span></h2>
+      <div class="tier-list">
+        <div class="tier-card">
+          <div class="tier-badge-circle">I</div>
+          <div class="tier-content">
+            <div class="tier-title">Bối cảnh · Vì sao CEO Việt cần OS mới</div>
+            <div class="tier-title-en">Context · Why a new mental OS</div>
+            <div class="tier-desc">Macro paradox Việt Nam vs SEA · Chẩn đoán vấn đề gốc · Luận đề.</div>
+          </div>
+          <div class="tier-duration">12 phút</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-badge-circle">II</div>
+          <div class="tier-content">
+            <div class="tier-title">Thinking OS · Cấu trúc 3 phần</div>
+            <div class="tier-title-en">The OS Architecture</div>
+            <div class="tier-desc">Lõi Tư Duy (Elon's Algorithm) · Nguyên tắc (5 principles) · Công cụ.</div>
+          </div>
+          <div class="tier-duration">20 phút</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-badge-circle">III</div>
+          <div class="tier-content">
+            <div class="tier-title">Thinking OS chạy thực chiến tại PATI Group</div>
+            <div class="tier-title-en">OS in production · Agentic AI at PATI</div>
+            <div class="tier-desc">Paperclip org · 6 agents · Sprint · Failure modes · Kết quả đo được.</div>
+          </div>
+          <div class="tier-duration">38 phút</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-badge-circle">IV</div>
+          <div class="tier-content">
+            <div class="tier-title">AI Fluency at Parity · Hành động sáng thứ 2</div>
+            <div class="tier-title-en">The new baseline · Monday actions</div>
+            <div class="tier-desc">Parity là gì · 3 cấp độ fluency · 3 việc CEO làm tuần sau Summit.</div>
+          </div>
+          <div class="tier-duration">15 phút</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S06 · OS ARCHITECTURE -->
+<section class="slide bg-light" data-slide="6">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · THINKING OS</div>
+      <div class="s-num">S.06 / ARCHITECTURE</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Cấu trúc OS · 3 phần</div>
+      <h2 class="slide-title">Hệ điều hành tư duy có <span class="accent">3 phần</span></h2>
+      <div class="os-architecture">
+        <div class="os-layer primary">
+          <div class="layer-tag">[01] · LÕI</div>
+          <div class="layer-name-vi">Lõi Tư Duy</div>
+          <div class="layer-name-en">How CEO processes problems</div>
+          <div class="layer-desc">Cách CEO xử lý mọi vấn đề kinh doanh. Không đổi khi công cụ đổi. Là "luật vật lý" trong đầu CEO.</div>
+          <div class="layer-what">→ Elon's Algorithm<br>5 bước lặp đi lặp lại suốt đời CEO</div>
+        </div>
+        <div class="os-layer">
+          <div class="layer-tag">[02] · CẤU HÌNH</div>
+          <div class="layer-name-vi">Nguyên tắc</div>
+          <div class="layer-name-en">Default settings for self and team</div>
+          <div class="layer-desc">Default mà CEO cài cho bản thân và tổ chức. Biến quyết định lặp lại thành phản xạ tự động.</div>
+          <div class="layer-what">→ 5 Principles<br>Entrepreneurship · 100/99 · 1-3-1 · Who Not How + AI First · 80/20 + Domino</div>
+        </div>
+        <div class="os-layer">
+          <div class="layer-tag">[03] · CÔNG CỤ</div>
+          <div class="layer-name-vi">Tools</div>
+          <div class="layer-name-en">Always changing</div>
+          <div class="layer-desc">Claude, n8n, agents, automation. Thay đổi hàng tháng. Không quan trọng bằng 2 tầng trên.</div>
+          <div class="layer-what">→ Thay được, học được<br>Không phải trọng tâm bài này</div>
+        </div>
+      </div>
+      <div class="os-callout">"CEO đang update công cụ. Em mời anh chị update <span class="gold-text">Lõi Tư Duy</span>."</div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S07 · LÕI TƯ DUY OVERVIEW -->
+<section class="slide" data-slide="7">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · LÕI TƯ DUY · KERNEL</div>
+      <div class="s-num">S.07 / ALGORITHM</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Lõi Tư Duy · How CEO processes any problem</div>
+      <div class="algo-header">
+        <div class="algo-count-badge">5</div>
+        <div>
+          <h2 class="slide-title" style="margin:0">Elon's Algorithm</h2>
+          <div class="title-en" style="margin-top:0.3rem">5 steps — applied by Musk at Tesla, SpaceX, Neuralink, xAI</div>
+        </div>
+      </div>
+      <div class="body-text" style="max-width:50em;">
+        Walter Isaacson trong cuốn tiểu sử <b>Elon Musk</b> (2023) quan sát rằng Elon áp dụng cùng một thuật toán 5 bước lặp đi lặp lại ở mọi công ty. Đây không phải framework quản trị — đây là cách ông <b>nghĩ</b>. Đây là Lõi Tư Duy của Thinking OS cho CEO Kỷ nguyên AI.
+      </div>
+      <div class="shift-box" style="margin-top:2rem; max-width:44em;">
+        <b>Dịch chuyển từ</b> quản trị bằng công cụ rời rạc <b>sang</b> quản trị bằng một thuật toán tư duy bất biến — áp dụng với người, với AI, với quy trình đều đúng.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S08 · ELON ALGORITHM DEEP DIVE -->
+<section class="slide bg-light" data-slide="8">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · LÕI TƯ DUY · KERNEL</div>
+      <div class="s-num">S.08 / 5 STEPS</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">5 bước áp dụng tại PATI · Elon's Algorithm in production</div>
+      <div class="algo-list">
+        <div class="algo-step">
+          <div class="algo-step-num">1</div>
+          <div>
+            <div class="algo-step-main">Chất vấn mọi yêu cầu</div>
+            <div class="algo-step-en">Question every requirement</div>
+            <div class="algo-step-example"><span class="tag">PATI ›</span> "DTC cần đội CS 5 người" — chất vấn: ai nói? SLA bao nhiêu mới đủ? Nếu 80% email là 5 intent lặp, cần con người thật không?</div>
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-step-num">2</div>
+          <div>
+            <div class="algo-step-main">Xóa bộ phận / quy trình</div>
+            <div class="algo-step-en">Delete any part or process you can</div>
+            <div class="algo-step-example"><span class="tag">PATI ›</span> Xóa trước, thêm lại sau. Nếu không phải thêm lại ≥10% thứ đã xóa thì chưa xóa đủ. Xóa Gorgias, xóa 39→14 Shopify apps, xóa bậc duyệt nội bộ.</div>
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-step-num">3</div>
+          <div>
+            <div class="algo-step-main">Đơn giản hóa</div>
+            <div class="algo-step-en">Simplify and optimize</div>
+            <div class="algo-step-example"><span class="tag">PATI ›</span> Chỉ đơn giản hóa sau khi đã xóa. Sai thứ tự này = tối ưu thứ lẽ ra không tồn tại. Một agent mỗi chức năng, không chồng lấn.</div>
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-step-num">4</div>
+          <div>
+            <div class="algo-step-main">Tăng tốc chu trình</div>
+            <div class="algo-step-en">Accelerate cycle time</div>
+            <div class="algo-step-example"><span class="tag">PATI ›</span> Response time CS từ giờ → giây. Thời gian từ ý tưởng content đến bài đăng từ ngày → phút. Tốc độ là chiến lược.</div>
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-step-num">5</div>
+          <div>
+            <div class="algo-step-main">Tự động hóa</div>
+            <div class="algo-step-en">Automate — last step, not first</div>
+            <div class="algo-step-example"><span class="tag">PATI ›</span> Bước cuối cùng, không phải bước đầu. Đa số CEO Việt tự động hóa bước 1 → chỉ khuếch đại cái lẽ ra phải xóa.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S09 · PRINCIPLES MAP -->
+<section class="slide" data-slide="9">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · NGUYÊN TẮC · CONFIG</div>
+      <div class="s-num">S.09 / PRINCIPLES</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Nguyên tắc · Default settings for an AI-first CEO</div>
+      <h2 class="slide-title">5 Nguyên tắc · <span class="accent">5 default</span> của CEO AI-first</h2>
+      <div class="body-text" style="margin-bottom:1rem; max-width:50em;">
+        Nguyên tắc = default. Default khác quyết định. Quyết định phải tốn năng lượng mỗi lần. Default tự chạy. CEO lớn không quyết định nhiều hơn — CEO lớn set default tốt hơn.
+      </div>
+      <div class="principles-map">
+        <div class="principle-card">
+          <div class="principle-num-big">01</div>
+          <div class="principle-label">Principle 01</div>
+          <div class="principle-name">Entrepreneurship</div>
+          <div class="principle-en-label">Tinh thần doanh chủ · Dấn thân, chịu trách nhiệm</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num-big">02</div>
+          <div class="principle-label">Principle 02</div>
+          <div class="principle-name">100% vs 99%</div>
+          <div class="principle-en-label">Chênh 1% · Khác biệt 100%</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num-big">03</div>
+          <div class="principle-label">Principle 03</div>
+          <div class="principle-name">1 Vấn đề<br>3 Giải pháp<br>1 Đề xuất</div>
+          <div class="principle-en-label">Khung ra quyết định chuẩn</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num-big">04</div>
+          <div class="principle-label">Principle 04</div>
+          <div class="principle-name">Who Not How<br>+ AI First</div>
+          <div class="principle-en-label">Agent nào · AI trước khi hỏi người</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num-big">05</div>
+          <div class="principle-label">Principle 05</div>
+          <div class="principle-name">80/20<br>Cực đoan + Domino</div>
+          <div class="principle-en-label">Cắt 80% nhiễu · top 20% đổ domino</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S10 · ENTREPRENEURSHIP -->
+<section class="slide bg-light" data-slide="10">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · NGUYÊN TẮC 01</div>
+      <div class="s-num">S.10 / ENTREPRENEURSHIP</div>
+    </div>
+    <div class="slide-body">
+      <div class="principle-slide">
+        <div class="principle-hero">
+          <div class="principle-index">Principle · 01 / 05</div>
+          <h1 class="principle-title"><em>Entrepreneurship</em></h1>
+          <div class="principle-title-en">Extreme Ownership · I am the cause</div>
+          <div class="principle-tagline">Tinh thần doanh chủ. <em>Không đổ thừa. Không đổ tại.</em> Dấn thân, chịu trách nhiệm đến <b>outcome</b> — không chỉ đến task.</div>
+        </div>
+        <div class="principle-detail">
+          <div class="principle-block">
+            <div class="block-label">Nguồn gốc</div>
+            <div class="block-content">
+              Trong kỷ nguyên agent, CEO không còn là lực lượng thực thi — là lực lượng ra quyết định. Nhưng để agent chạy được, <span class="highlight">mỗi nhân viên phải nghĩ như CEO của chức năng mình</span>. Không có "chờ sếp duyệt". Không có "không phải việc của em". Gốc tư duy này từ Jocko Willink — <em>Extreme Ownership</em>: người lãnh đạo chịu trách nhiệm với mọi thứ trong phạm vi của họ, kể cả lỗi của người khác.
+            </div>
+          </div>
+          <div class="principle-block">
+            <div class="block-label">Áp dụng tại PATI</div>
+            <div class="block-content">
+              Mọi nhân viên được hỏi hàng ngày: <span class="highlight">"Nếu bạn là CEO của chức năng này, bạn sẽ làm gì?"</span> Khi agent lỗi — không hỏi <em>"Agent lỗi gì?"</em> mà hỏi <em>"Tôi đã đặt context chưa đủ ở đâu?"</em>. Khi flow không chạy — không chờ dev fix, dùng AI đọc log tự chẩn đoán. <b>Everyone is a CEO. Everyone is an engineer.</b>
+            </div>
+          </div>
+          <div class="principle-block">
+            <div class="block-label">Default flip</div>
+            <div class="block-content">
+              Default cũ: <em>"Ai lỗi?"</em> → Default mới: <b>"Tôi đã làm gì để ngăn?"</b> · Default cũ: <em>"Việc này của ai?"</em> → Default mới: <b>"Nếu không ai làm, tôi làm — rồi mời team về cùng."</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S11 · ASSET SECOND -->
+<section class="slide" data-slide="11">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · NGUYÊN TẮC 02</div>
+      <div class="s-num">S.11 / 100 VS 99</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Principle 02 / 05 · Phase transition</div>
+      <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; align-items: center; margin-bottom: 1.2rem;">
+        <div>
+          <h1 class="principle-title" style="margin-bottom:0.6rem;"><em>100%</em> vs <em>99%</em></h1>
+          <div class="principle-title-en" style="margin-bottom:0.8rem;">1% chênh input — 100% chênh outcome</div>
+          <div class="gap-display" style="margin:0.5rem 0;">
+            <div class="gap-num full">100</div>
+            <div class="gap-vs">vs</div>
+            <div class="gap-num partial">99</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display); font-weight:600; font-size:clamp(1.2rem,1.7vw,1.5rem); color:var(--dark); line-height:1.35; margin-bottom:0.8rem; letter-spacing:0.2px;">
+            Một số quyết định có tính <em style="color:var(--red); font-style:normal;">phase transition</em> — chênh 1% tạo 100% outcome khác.
+          </div>
+          <div style="font-size:0.95rem; color:var(--text); line-height:1.65;">
+            Nước 99°C vẫn là nước. 100°C là hơi — hai pha khác nhau, không phải "99% hơi". 1% backup plan = tín hiệu "CEO chưa all-in" → team không all-in → customer không commit → outcome = 0. Cái 1% bạn giữ "cho chắc" là cái đang phá vỡ 100%.
+          </div>
+        </div>
+      </div>
+
+      <div class="example-grid" style="grid-template-columns: repeat(2, 1fr); gap: 1.4rem; max-width: 64em; margin-left: auto; margin-right: auto;">
+        <div class="example-card">
+          <div class="example-label">GLOBAL · 2007</div>
+          <div class="example-name">Steve Jobs · Gorilla Glass</div>
+          <div class="example-deed"><b>6 tháng</b> trước ngày iPhone ra mắt, Jobs rút máy mẫu từ túi jean — màn nhựa xước thảm hại sau 2 tuần. Gọi Wendell Weeks, CEO Corning: <em>"Làm cho tôi kính siêu cứng trong 6 tháng."</em> Weeks: "Không thể — Chemcor chưa từng sản xuất hàng loạt, cần 3-5 năm." Jobs: <em>"Get your mind around it. Yes, you can."</em> Corning retool toàn bộ nhà máy Kentucky. Gorilla Glass kịp launch ngày 29/06/2007.</div>
+          <div class="example-counter">Bản <b>99%</b> = giữ nhựa cho đúng tiến độ (mọi đối thủ đều vậy) → 2 tuần sau launch iPhone trông như đồ chơi xước. Bản <b>100%</b> = đổi giữa chừng → Gorilla Glass thành chuẩn công nghiệp, <b>6 tỷ thiết bị</b>, Apple định nghĩa "premium feel."</div>
+        </div>
+        <div class="example-card">
+          <div class="example-label">GLOBAL · 1997</div>
+          <div class="example-name">Jensen Huang · Push your chips in</div>
+          <div class="example-deed">1996, NVIDIA <b>30 ngày nữa phá sản</b>. NV1 thất bại, Jensen sa thải nửa công ty, còn 6 tháng tiền mặt — <b>một lần tape-out duy nhất</b>. Chuẩn mực ngành: in silicon prototype → test → sửa bug → tape-out lại, mỗi vòng $1–2M. NVIDIA không đủ tiền cho vòng thứ 2. Jensen định nghĩa lại cụm <em>"push your chips in"</em> — KHÔNG phải gambling: <em>"You're taking everything in the future, all the risky things, and pulling them in advance."</em> Mua emulation tech từ ICOS (đang đóng cửa), <b>mô phỏng TOÀN BỘ RIVA 128 trong software</b>, build cả software stack, chạy QA mọi driver/game/ứng dụng VGA — trước khi in silicon. Khi bấm nút tape-out, họ <b>đã biết</b> chip hoạt động.</div>
+          <div class="example-counter">Bản <b>99%</b> = "test kỹ nhất có thể, chấp nhận 2–3 vòng tape-out" (standard industry). → NVIDIA phá sản. Bản <b>100%</b> = prefetch mọi rủi ro mô phỏng được. → RIVA 128 launch 8/1997, <b>1M+ chiếc trong 4 tháng</b>, cứu công ty. Triết lý "prefetch" là DNA NVIDIA 30 năm — hôm nay áp dụng cả cho supply chain (Lumentum, Coherent, TSMC, ASML).</div>
+        </div>
+      </div>
+
+      <div class="shift-box" style="margin-top: 1.3rem; max-width: none;">
+        <b>Áp dụng AI tại PATI ›</b> "Dùng AI <b>cho tất cả</b> back-office" (100%) khác xa "dùng AI <b>cho nhiều việc</b>" (99%). 100% buộc thiết kế kiến trúc agent. 99% cho phép "đặc thù nên vẫn làm tay" — và "đặc thù" sẽ lan sang mọi việc khác.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S12 · 1-3-1 FRAMEWORK -->
+<section class="slide bg-light" data-slide="12">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · NGUYÊN TẮC 03</div>
+      <div class="s-num">S.12 / 1-3-1</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Principle 03/05 · Decision framework</div>
+      <h1 class="slide-title"><span class="accent">1</span> Problem · <span class="gold-accent">3</span> Solutions · <span class="accent">1</span> Proposal</h1>
+      <div class="title-en">The decision framework CEO applies to people and AI agents alike</div>
+      <div class="framework-diagram">
+        <div class="fw-col problem">
+          <div class="fw-label">INPUT</div>
+          <div class="fw-count">1</div>
+          <div class="fw-title">Vấn đề</div>
+          <div class="fw-desc">Viết rõ bằng 1 câu. Nếu không viết được 1 câu → chưa hiểu vấn đề. Quay lại suy nghĩ thêm.</div>
+        </div>
+        <div class="fw-col middle">
+          <div class="fw-label">ANALYSIS</div>
+          <div class="fw-count">3</div>
+          <div class="fw-title">Giải pháp</div>
+          <div class="fw-desc">3 lựa chọn khác bản chất, không phải 3 biến thể. Mỗi giải pháp kèm trade-off rõ ràng.</div>
+          <ul class="fw-solutions-list">
+            <li><b>A.</b> Conservative / chi phí thấp</li>
+            <li><b>B.</b> Balanced / scalable</li>
+            <li><b>C.</b> Aggressive / leverage cao</li>
+          </ul>
+        </div>
+        <div class="fw-col proposal">
+          <div class="fw-label">OUTPUT</div>
+          <div class="fw-count">1</div>
+          <div class="fw-title">Đề xuất</div>
+          <div class="fw-desc">1 chọn. Có lý do. Có ngày triển khai. Có tiêu chí đánh giá thắng/thua. Không có "để cân nhắc".</div>
+        </div>
+      </div>
+      <div class="shift-box" style="margin-top:1.5rem; max-width:54em;">
+        <b>PATI ›</b> Áp dụng cho mọi đề xuất từ đội ngũ và mọi đề xuất từ AI agent. Agent phải trả về 1-3-1, không được trả "ý tưởng chung." Khi agent tuân thủ khung này, CEO có thể đọc 10 đề xuất trong 5 phút.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S13 · WHO NOT HOW + 80/20 -->
+<section class="slide" data-slide="13">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER II</span> · NGUYÊN TẮC 04 + 05</div>
+      <div class="s-num">S.13 / LEVERAGE PAIR</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">2 nguyên tắc cuối · Leverage pair</div>
+      <h2 class="slide-title">Who Not How + AI First <span class="gold-accent">&amp;</span> 80/20 + Domino</h2>
+      <div class="split-principles">
+        <div class="split-card">
+          <div class="split-index">[04 / 05] · WHO NOT HOW + AI FIRST</div>
+          <div class="split-title">Which <em>Agent</em> ·<br>AI <em>trước</em> hỏi người</div>
+          <div class="split-en">Dan Sullivan (2020) × Tobi Lütke · Shopify memo (2025)</div>
+          <div class="split-body">
+            Dan Sullivan: thay vì <em>"làm thế nào?"</em>, hỏi <b>"ai đã làm việc này rồi?"</b>. Tobi Lütke gửi toàn bộ Shopify 4/2025: <b>"AI usage is now a baseline expectation"</b> — không biết dùng AI = không đủ tiêu chuẩn làm việc. Hai nguyên tắc hợp nhất trong kỷ nguyên agent: câu hỏi đầu tiên luôn là <em>"AI làm được 80% việc này không?"</em> Nếu có — thiết kế agent trước. Nếu không — tuyển người, nhưng tuyển người <em>biết vận hành agent</em>.
+          </div>
+          <div class="split-pati">PATI ›  Trước khi mở JD nào, CEO trả lời: <b>"Agent đảm nhận được 80% không?"</b> Mỗi chức năng có 1 agent chuyên biệt — không viết prompt rời rạc.</div>
+        </div>
+        <div class="split-card">
+          <div class="split-index">[05 / 05] · 80/20 CỰC ĐOAN + DOMINO</div>
+          <div class="split-title">Cắt <em>80% nhiễu</em> ·<br>Top 20% đổ <em>Domino</em></div>
+          <div class="split-en">Pareto extreme × Gary Keller · The ONE Thing</div>
+          <div class="split-body">
+            Pareto cơ bản: 20% hành động tạo 80% kết quả. <b>Pareto CỰC ĐOAN</b>: cắt sâu hơn nữa — chỉ ~5% thực sự drive outcome. <b>Domino</b> (Gary Keller): khi bạn đặt đúng ô đầu tiên và đẩy nó — nó tự lật ô tiếp theo, rồi tiếp nữa, <em>không cần bạn đụng vào</em>. Tìm Domino đầu tiên. Không dàn trải.
+          </div>
+          <div class="split-pati">PATI ›  39 Shopify apps → 14. 60+ tools → 5 core. Domino đầu tiên = <b>Bezos (CS)</b>: CS chạy → team giải phóng làm việc cao hơn → CEO có bandwidth làm chiến lược → order volume tăng → Naval/Jobs kick in. Một agent đúng = cả chuỗi đổ theo.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S14 · PATI INTRO -->
+<section class="slide bg-light" data-slide="14">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · THINKING OS IN PRODUCTION</div>
+      <div class="s-num">S.14 / PATI INTRO</div>
+    </div>
+    <div class="slide-body">
+      <div class="pati-intro">
+        <div>
+          <div class="section-label">30 giây về PATI Group</div>
+          <div class="pati-hero-title">PATI <em>Group</em></div>
+          <div class="pati-hero-sub">Một công ty DTC engineer-driven — <em>1 CEO + đội AI Agent Trainers + n AI Agents</em>. Đang chuyển dịch thành AI Native Organization.</div>
+        </div>
+        <ul class="pati-facts">
+          <li>
+            <div class="fact-label">Layer 01</div>
+            <div class="fact-value">CEO<span class="sub">1 người · điều phối · set outcome &amp; framework · không thực thi</span></div>
+          </li>
+          <li>
+            <div class="fact-label">Layer 02</div>
+            <div class="fact-value">AI Agent Trainers<span class="sub">Con người — dạy agent, giám sát agent, nâng cấp agent mỗi ngày</span></div>
+          </li>
+          <li>
+            <div class="fact-label">Layer 03</div>
+            <div class="fact-value">AI Agents · n (minimal)<span class="sub">Mỗi agent 1 chức năng chuỗi giá trị · tối thiểu hoá số lượng, tối đa hoá năng lực</span></div>
+          </li>
+          <li>
+            <div class="fact-label">DNA</div>
+            <div class="fact-value">AI Engineer Driven<span class="sub">Kỹ sư là lực lượng lõi — không phải ops, không phải agency</span></div>
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 1.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1rem 1.2rem; background: var(--gold-bg); border-radius: 8px;">
+        <div>
+          <div style="font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem;">Culture · Daily use</div>
+          <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--dark); line-height: 1.1;">17 / 17</div>
+          <div style="font-size: 0.82rem; color: var(--text);">dùng Claude Code + AntiGravity hàng ngày</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem;">Tool budget</div>
+          <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--dark); line-height: 1.1;">100%</div>
+          <div style="font-size: 0.82rem; color: var(--text);">có Claude Code + Google Ultra do công ty cấp</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem;">Ritual</div>
+          <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--dark); line-height: 1.1;">Thứ 6</div>
+          <div style="font-size: 0.82rem; color: var(--text);">AI Sharing — demo thực tế weekly</div>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; padding: 0.9rem 1.2rem; background: var(--red-light); border-left: 4px solid var(--red); border-radius: 8px; font-size: 0.88rem; color: var(--dark); line-height: 1.7;">
+        <b>Lời thú thật ›</b> Chúng tôi vẫn <em>chưa chuyên nghiệp</em> — cơ bản còn chưa chắc. <b>Mục tiêu 3-6 tháng tới:</b> mọi định nghĩa, mọi framework, mọi SOP — phải <b>CHẮC</b>. <span style="color:var(--red); font-weight:700;">Học thuộc · Hiểu đúng · Làm đủ.</span>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S15 · ROOT PROBLEM -->
+<section class="slide" data-slide="15">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · PROBLEM</div>
+      <div class="s-num">S.15 / ROOT PROBLEM</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Vấn đề gốc · The equation we solved</div>
+      <h2 class="slide-title">1 <em>CEO</em>. 16 <em>Trainer</em>. <span class="accent">n agent</span> — tối thiểu.</h2>
+      <div class="problem-equation">
+        <div class="eq-term people">
+          <div class="eq-big">1</div>
+          <div class="eq-label">CEO · điều phối</div>
+        </div>
+        <div class="eq-op">+</div>
+        <div class="eq-term people">
+          <div class="eq-big">16</div>
+          <div class="eq-label">AI Agent Trainers · human</div>
+        </div>
+        <div class="eq-op">+</div>
+        <div class="eq-term scale">
+          <div class="eq-big">n</div>
+          <div class="eq-label">AI Agents · minimal</div>
+        </div>
+        <div class="eq-op">=</div>
+        <div class="eq-term result">
+          <div class="eq-big">?</div>
+          <div class="eq-label">Workforce equivalent</div>
+        </div>
+      </div>
+      <div class="problem-hypothesis">
+        <div class="hyp-label">Giả thuyết</div>
+        <div class="hyp-text">Không phải <em>"CEO 1 người vận hành 30 agent"</em>. Mà là <em>"CEO điều phối Trainers · Trainers vận hành Agents tối thiểu"</em>. Nếu thiết kế đúng — 17 con người + n agent (tối thiểu, không maximum) tạo được output của một tổ chức <b>30+ người truyền thống</b> — fixed cost/tháng thấp hơn 1 order of magnitude.</div>
+      </div>
+      <div style="margin-top: 1.3rem; padding: 1rem 1.3rem; background: var(--gold-bg); border-left: 4px solid var(--gold); border-radius: 8px; display: flex; gap: 1.3rem; align-items: center;">
+        <div style="flex: 0 0 auto; min-width: 9rem;">
+          <div style="font-family:var(--font-display); font-size:0.66rem; font-weight:700; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase; margin-bottom: 0.2rem;">External proof</div>
+          <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--dark); line-height:1.15;">Jesse</div>
+          <div style="font-size:0.78rem; color:var(--text2);">ex-Y Combinator founder</div>
+        </div>
+        <div style="flex: 1 1 auto; font-size: 0.92rem; line-height: 1.65; color: var(--text);">
+          Mẹ 4 con (5, 4, 2 tuổi và 4 tháng). <b>11 AI agents</b> chạy trên <b>Mac Mini 24/7</b> — soạn giáo án, ghi nhật ký học tập, đặt hàng tự động. Agent tự nhân bản khi quá tải.
+          <div style="margin-top: 0.45rem; font-style: italic; color: var(--dark); font-weight: 600;">Nếu một bà mẹ 4 con làm được — CEO SME có gì cản?</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S16 · PAPERCLIP ORG CHART -->
+<section class="slide bg-light" data-slide="16">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · ARCHITECTURE</div>
+      <div class="s-num">S.16 / ORG CHART</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Đội ngũ Agentic AI tại PATI · The agentic team</div>
+      <h2 class="slide-title">5 agents · <span class="accent">5 tên người truyền cảm hứng</span></h2>
+      <div class="org-chart">
+        <div class="org-node orchestrator">
+          <div class="node-name">Tim Cook</div>
+          <div class="node-role">Orchestrator</div>
+          <div class="node-model">claude-opus-4.7</div>
+        </div>
+        <div class="org-line"></div>
+        <div class="org-branch">
+          <div class="agent-col">
+            <div class="org-node agent-node" style="margin-top:0.5rem;">
+              <div class="node-name">Bezos</div>
+              <div class="node-role">Customer Service</div>
+              <div class="node-model">sonnet 4.7</div>
+            </div>
+          </div>
+          <div class="agent-col">
+            <div class="org-node agent-node" style="margin-top:0.5rem;">
+              <div class="node-name">CR7</div>
+              <div class="node-role">Operations</div>
+              <div class="node-model">haiku 4.5</div>
+            </div>
+          </div>
+          <div class="agent-col">
+            <div class="org-node agent-node" style="margin-top:0.5rem;">
+              <div class="node-name">Naval</div>
+              <div class="node-role">Growth · Retention</div>
+              <div class="node-model">sonnet 4.7</div>
+            </div>
+          </div>
+          <div class="agent-col">
+            <div class="org-node agent-node" style="margin-top:0.5rem;">
+              <div class="node-name">Elon</div>
+              <div class="node-role">CEO's Partner</div>
+              <div class="node-model">sonnet 4.7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shift-box" style="margin-top:1.5rem; max-width:55em; margin-left:auto; margin-right:auto; text-align:center;">
+        Mỗi agent là <b>một chức năng chuỗi giá trị</b>, không phải một prompt. CEO đóng vai trò người điều phối Tim Cook — không phải người thực thi.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S17 · TIM COOK -->
+<section class="slide" data-slide="17">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · AGENT 01</div>
+      <div class="s-num">S.17 / ORCHESTRATOR</div>
+    </div>
+    <div class="slide-body">
+      <div class="agent-slide">
+        <div class="agent-hero">
+          <div class="agent-index-badge">
+            <div class="agent-index-num">01</div>
+            <div class="agent-index-label">Agent · 01 / 05</div>
+          </div>
+          <div class="agent-name">Tim Cook</div>
+          <div class="agent-role">Orchestrator</div>
+          <div class="agent-role-en">The CEO's right hand · Executive summary</div>
+        </div>
+        <div class="agent-detail">
+          <ul class="agent-spec-list">
+            <li><div class="spec-label">Function</div><div class="spec-value">Điều phối liên agent · Executive summary cho CEO</div></li>
+            <li><div class="spec-label">Model</div><div class="spec-value code">claude-opus-4-7 · Claudible · port 18789</div></li>
+            <li><div class="spec-label">Channel</div><div class="spec-value code">Telegram (CEO) · LarkSuite (all-agents)</div></li>
+            <li><div class="spec-label">Kết quả</div><div class="spec-value metric">CEO xử lý <span class="tbd">[N]</span> quyết định/ngày thay vì <span class="tbd">[M]</span> — mọi thứ lọc qua Tim Cook trước khi đến CEO.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S18 · BEZOS · HERO EXAMPLE -->
+<section class="slide bg-light" data-slide="18">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · AGENT 02 · HERO</div>
+      <div class="s-num">S.18 / CS</div>
+    </div>
+    <div class="slide-body">
+      <div class="agent-slide">
+        <div class="agent-hero">
+          <div class="agent-index-badge">
+            <div class="agent-index-num">02</div>
+            <div class="agent-index-label">Agent · 02 / 05 · Ví dụ cụ thể</div>
+          </div>
+          <div class="agent-name">Bezos</div>
+          <div class="agent-role">Customer Service</div>
+          <div class="agent-role-en">Obsessed with the customer · Always on</div>
+          <div style="margin-top: 1.8rem; padding: 1rem 1.2rem; background: var(--red-light); border-left: 4px solid var(--red); border-radius: 8px;">
+            <div style="font-family:var(--font-display); font-size:0.68rem; font-weight:700; color:var(--red); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.5rem;">Specific example · The hero of this talk</div>
+            <div style="font-size:0.92rem; line-height:1.7; color:var(--dark);">
+              Team CS cũ · <b>~60Tr/tháng</b>. Email trễ qua ngày, weekend offline, khách hủy đơn.<br>
+              <b>2 tuần</b> sau — Bezos chạy production · <b>&lt;25Tr đầu tư 1 lần</b> (Mac Mini + setup) · <b>~50Tr/tháng tiết kiệm</b>.
+            </div>
+          </div>
+        </div>
+        <div class="agent-detail">
+          <div style="margin-bottom: 1.2rem; padding: 0.9rem 1.1rem; background: var(--gold-light); border: 1px dashed var(--gold); border-radius: 8px; font-size: 0.88rem; color: var(--text); line-height: 1.75;">
+            <div style="font-family:var(--font-display); font-weight:700; color:var(--dark); margin-bottom:0.4rem; letter-spacing:0.2px;">Câu chuyện · 3 nhịp</div>
+            <div><b style="color:var(--red);">Đau ›</b> DTC cần CS 24/7. 5 người vẫn lọt ticket weekend. Khách hủy đơn trước khi team kịp rep.</div>
+            <div><b style="color:var(--red);">Thử lần 1 ›</b> Gorgias + macro. Lặp được 80% câu trả lời, vẫn cần người duyệt. Tiết kiệm ~15% — không đủ để tự tin đập team.</div>
+            <div><b style="color:var(--red);">Chuyển pha ›</b> Đập Gorgias. Kết nối <b>200K+ hội thoại lịch sử</b> qua API → Bezos học tone, học SOP refund, học cách escalate. Self-learning bật mặc định.</div>
+          </div>
+          <ul class="agent-spec-list">
+            <li><div class="spec-label">Function</div><div class="spec-value">Trả 100% email CS cho DTC brand · SLA 24/7 · refund · tracking · FAQ · restock escalation</div></li>
+            <li><div class="spec-label">Model</div><div class="spec-value code">claude-sonnet-4-7 · OS-isolated macOS user (bezos)</div></li>
+            <li><div class="spec-label">Infra</div><div class="spec-value code">OpenClaw + Node.js email bridge · LarkSuite · Mac Mini M4</div></li>
+            <li><div class="spec-label">Dữ liệu</div><div class="spec-value metric">200K+ hội thoại lịch sử nạp qua API · brand tone · SOP refund · escalation flow</div></li>
+            <li><div class="spec-label">Kết quả</div><div class="spec-value metric"><b>2 tuần</b> từ kickoff → go-live · <b>~60Tr/tháng</b> → <b>&lt;25Tr đầu tư 1 lần</b> · SLA 24/7 · Response time giờ → giây · Self-learning đang chạy.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S19 · CR7 -->
+<section class="slide" data-slide="19">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · AGENT 03</div>
+      <div class="s-num">S.19 / OPS</div>
+    </div>
+    <div class="slide-body">
+      <div class="agent-slide">
+        <div class="agent-hero">
+          <div class="agent-index-badge">
+            <div class="agent-index-num">03</div>
+            <div class="agent-index-label">Agent · 03 / 05</div>
+          </div>
+          <div class="agent-name">CR7</div>
+          <div class="agent-role">Operations</div>
+          <div class="agent-role-en">High volume · High frequency · No drama</div>
+        </div>
+        <div class="agent-detail">
+          <ul class="agent-spec-list">
+            <li><div class="spec-label">Function</div><div class="spec-value">Order processing · Inventory sync · Fulfillment checks · Daily ops reporting</div></li>
+            <li><div class="spec-label">Model</div><div class="spec-value code">claude-haiku-4-5 · High-volume low-latency</div></li>
+            <li><div class="spec-label">Rationale</div><div class="spec-value metric">Haiku chọn vì volume cao, không cần reasoning sâu. Cost/call ~1/10 Sonnet. Pareto áp dụng vào model choice.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S20 · NAVAL -->
+<section class="slide bg-light" data-slide="20">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · AGENT 04</div>
+      <div class="s-num">S.20 / GROWTH</div>
+    </div>
+    <div class="slide-body">
+      <div class="agent-slide">
+        <div class="agent-hero">
+          <div class="agent-index-badge">
+            <div class="agent-index-num">04</div>
+            <div class="agent-index-label">Agent · 04 / 05</div>
+          </div>
+          <div class="agent-name">Naval</div>
+          <div class="agent-role">Growth · Retention</div>
+          <div class="agent-role-en">Compound interest for customers</div>
+        </div>
+        <div class="agent-detail">
+          <ul class="agent-spec-list">
+            <li><div class="spec-label">Function</div><div class="spec-value">Email flows · Segmentation · LTV optimization · Subscription management</div></li>
+            <li><div class="spec-label">Model</div><div class="spec-value code">claude-sonnet-4-7</div></li>
+            <li><div class="spec-label">Stack</div><div class="spec-value code">Klaviyo · Recharge · Shopify Plus</div></li>
+            <li><div class="spec-label">Trạng thái</div><div class="spec-value metric">Đang setup — flows, segmentation logic, test coverage đang build.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S21 · ELON · CEO's THINKING PARTNER -->
+<section class="slide bg-light" data-slide="21">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · AGENT 05 · PARITY EXEMPLAR</div>
+      <div class="s-num">S.21 / PERSONAL</div>
+    </div>
+    <div class="slide-body">
+      <div class="agent-slide">
+        <div class="agent-hero">
+          <div class="agent-index-badge">
+            <div class="agent-index-num">05</div>
+            <div class="agent-index-label">Agent · 05 / 05</div>
+          </div>
+          <div class="agent-name">Elon</div>
+          <div class="agent-role">Trợ lý tư duy cá nhân của CEO</div>
+          <div class="agent-role-en">Personal OpenClaw · Think WITH, not FOR</div>
+          <div style="margin-top: 1.8rem; padding: 1rem 1.2rem; background: var(--gold-bg); border-left: 4px solid var(--gold); border-radius: 8px;">
+            <div style="font-family:var(--font-display); font-size:0.68rem; font-weight:700; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.5rem;">Đây không phải agent doanh thu</div>
+            <div style="font-size:0.92rem; line-height:1.7; color:var(--dark);">
+              5 agent trên tối ưu <b>chỉ số kinh doanh</b> — CS, ops, growth, content, storefront.<br>
+              Elon là agent thứ 6 — tối ưu <em>năng lực tư duy của CEO</em>. <b>"Head work", không "task work."</b>
+            </div>
+          </div>
+        </div>
+        <div class="agent-detail">
+          <ul class="agent-spec-list">
+            <li>
+              <div class="spec-label">Function</div>
+              <div class="spec-value">OpenClaw chạy 24/7 trên Mac Mini riêng của CEO. Isolated từ back-office agents — agent này có <em>quyền truy cập</em> vào đời sống CEO (lịch, email cá nhân, ghi âm họp, ghi chú Obsidian), những agent khác không có.</div>
+            </li>
+            <li>
+              <div class="spec-label">Daily briefing</div>
+              <div class="spec-value">Tóm tắt mọi cuộc họp CEO (audio → insight → action 1-3-1). Market Intel hàng sáng theo framework PESTEL + STEEP. 15 phút đầu giờ: <em>"Hôm qua thế giới nói gì. Hôm nay anh cần biết gì. Quyết định gì trước 5pm."</em></div>
+            </li>
+            <li>
+              <div class="spec-label">Mentor</div>
+              <div class="spec-value">Dạy CEO framework (Elon's 5 bước, First Principles, 80/20, Regret Minimization, 1-3-1). Gọi ra <em>bias</em> khi CEO quyết định theo quán tính. Rubber-duck cho quyết định khó — không phụ họa, <em>đối chất</em>.</div>
+            </li>
+            <li>
+              <div class="spec-label">Story vault</div>
+              <div class="spec-value">Kho câu chuyện truyền cảm hứng. Khi CEO nản, Elon chọn <em>đúng 1 story</em> theo mood + context (RIVA 128, Gorilla Glass, Jesse 4 con, Toy Story 2…). Không sướt mướt — kể để CEO tự đứng dậy.</div>
+            </li>
+            <li>
+              <div class="spec-label">Model + stack</div>
+              <div class="spec-value code">claude-opus-4-7 (strategic) + claude-sonnet-4-7 (fast) · Mac Mini M4 riêng · OpenClaw framework · Obsidian second brain.</div>
+            </li>
+            <li>
+              <div class="spec-label">Trạng thái</div>
+              <div class="spec-value metric">Đang setup — CEO đang dùng subset of functions (daily briefing + mentor layer). Story vault + full agentic flow mục tiêu 3-6 tháng tới, song song với việc nâng cấp kiến thức cơ bản của đội.</div>
+            </li>
+            <li>
+              <div class="spec-label">Philosophy</div>
+              <div class="spec-value metric"><em>"Think WITH CEO, không decide FOR CEO."</em> Đây là <b>hướng tới</b> Parity (ref S.25) — co-thinker, không phải tool user. Frame cũ <em>"agent thay task"</em> không áp dụng cho Elon. Khi Elon chạy full, CEO có bandwidth thực sự để điều phối 5 agent kia.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S22 · INFRASTRUCTURE STACK -->
+<section class="slide" data-slide="22">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · INFRA</div>
+      <div class="s-num">S.22 / STACK</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Infrastructure · The machine behind the agents</div>
+      <h2 class="slide-title">Stack: <span class="accent">4 lớp</span>, chạy trên 2 Mac Mini M4</h2>
+      <div class="stack-diagram">
+        <div class="stack-layer highlight">
+          <div class="stack-layer-label">[L1] MODEL</div>
+          <div class="stack-layer-name">Claudible · Claude API<span class="sub">claude-opus-4-7 · claude-sonnet-4-7 · claude-haiku-4-5 · DeepSeek fallback</span></div>
+          <div class="stack-layer-host">cloud api</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-layer-label">[L2] ORCHESTRATION</div>
+          <div class="stack-layer-name">Multi-agent coordinator<span class="sub">Tim Cook làm executive layer · route task đến agent chuyên biệt</span></div>
+          <div class="stack-layer-host">Mac Mini #1</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-layer-label">[L3] RUNTIME</div>
+          <div class="stack-layer-name">OpenClaw Gateway<span class="sub">3 macOS users (timcook · bezos · ops) → 3 Gateway processes · isolation by design</span></div>
+          <div class="stack-layer-host">Mac Mini #1 + #2</div>
+        </div>
+        <div class="stack-layer">
+          <div class="stack-layer-label">[L4] DATA</div>
+          <div class="stack-layer-name">Supabase VPS<span class="sub">Memory · logs · embeddings · history (migrating 57K JSONL records)</span></div>
+          <div class="stack-layer-host">VPS · dedicated</div>
+        </div>
+      </div>
+      <div class="shift-box" style="margin-top:1.2rem; max-width:56em;">
+        <b>Design insight ›</b> Mỗi agent là một macOS user riêng, không phải một container. Lý do: khi agent cần click chuột, gõ phím, điều khiển GUI app (LarkSuite, Obsidian) — nó cần <b>OS-level isolation</b>, không phải process isolation.<br>
+        <b style="color: var(--red);">Kinh tế ›</b> 2 Mac Mini M4 + Supabase VPS ≈ <b>&lt;25Tr đầu tư 1 lần</b> + cloud API pay-as-you-go. Thay cho team CS cũ <b>~60Tr/tháng</b> (ref S.18). Đây là lý do stack này không phải "tốn kém cho SME" — là lý do SME phải có.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S23 · SPRINT STORY -->
+<section class="slide bg-light" data-slide="23">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · BUILD STORY</div>
+      <div class="s-num">S.23 / SPRINT</div>
+    </div>
+    <div class="slide-body">
+      <div class="sprint-story">
+        <div>
+          <div class="section-label">Sprint story · How Bezos went live</div>
+          <div class="sprint-headline"><span class="num">48</span> giờ deploy Bezos từ blueprint đến production</div>
+          <div class="sprint-sub">Không phải "phát triển 6 tháng". Không phải "hợp đồng vendor". <em>Một CEO, hai ngày</em>, Bezos trả email thật.</div>
+        </div>
+        <div class="sprint-timeline">
+          <div class="sprint-step">
+            <div class="sprint-time">H+00</div>
+            <div class="sprint-event"><span class="main">Kickoff</span>Sau khi audit Gorgias (39 apps) — quyết định xây CS agent riêng. Bỏ Gorgias hoàn toàn.</div>
+          </div>
+          <div class="sprint-step">
+            <div class="sprint-time">H+08</div>
+            <div class="sprint-event"><span class="main">Infra</span>OpenClaw Gateway set up · Mac Mini M4 · macOS user <span class="mono">bezos</span> · LarkSuite integration.</div>
+          </div>
+          <div class="sprint-step">
+            <div class="sprint-time">H+20</div>
+            <div class="sprint-event"><span class="main">Bridge</span>Node.js email bridge → poll inbox → feed vào Bezos → reply về IMAP.</div>
+          </div>
+          <div class="sprint-step">
+            <div class="sprint-time">H+32</div>
+            <div class="sprint-event"><span class="main">Test</span>Shadow mode — Bezos reply vào LarkSuite thay vì gửi ra, CEO review.</div>
+          </div>
+          <div class="sprint-step">
+            <div class="sprint-time">H+44</div>
+            <div class="sprint-event"><span class="main">Go live</span>Bezos trả email thật. Response time đo được lần đầu tiên.</div>
+          </div>
+          <div class="sprint-step">
+            <div class="sprint-time">H+48</div>
+            <div class="sprint-event"><span class="main">Ship</span>Bezos chạy autonomous. CEO ra khỏi loop vận hành CS từ đây.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S24 · FAILURE MODES -->
+<section class="slide" data-slide="24">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER III</span> · LESSONS</div>
+      <div class="s-num">S.24 / FAILURE MODES</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">Những bài học không ai kể · What broke at PATI</div>
+      <div class="failure-wrapper">
+        <div class="failure-quote">
+          Case thất bại giá trị hơn case thành công. Vì case thành công bán slide. <em>Case thất bại bán trí tuệ.</em>
+        </div>
+        <div class="failure-case">
+          <div class="failure-col fail">
+            <div class="failure-col-label">[×] Thất bại · Gorgias Full Export</div>
+            <p class="main">Muốn export toàn bộ data Gorgias qua chat với AI agent. Chạy nhiều lần, treo, timeout, không ra output cuối.</p>
+            <p>Lý do: data pipeline dài (nhiều giờ), chat interface không phù hợp cho long-running job. Agent restart giữa chừng, mất state.</p>
+          </div>
+          <div class="failure-col lesson">
+            <div class="failure-col-label">[✓] Bài học · Không delegate pipeline qua chat</div>
+            <p class="main">Long-running data jobs phải chạy Terminal trực tiếp, có resume checkpoint, có logging file-based. Không dựa vào chat session.</p>
+            <p>Chat là nơi ra <em>quyết định</em>. Terminal là nơi <em>thực thi</em> job dài. Đừng nhầm hai thứ này.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S25 · PARITY -->
+<section class="slide" data-slide="25">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER IV</span> · ACTION</div>
+      <div class="s-num">S.25 / PARITY</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">AI Fluency at Parity · Định nghĩa mới 2026</div>
+      <div class="parity-statement">
+        Không <em>thay thế</em>.<br>Cùng <em>tư duy</em>.
+      </div>
+      <div style="margin-top: 0.7rem; font-size: 0.88rem; color: var(--text2); font-style: italic; max-width: 50em;">
+        "AI có xu hướng <b style="color:var(--dark); font-style:normal;">BỔ TRỢ</b>, chứ không phải <b style="color:var(--dark); font-style:normal;">THAY THẾ</b> lực lượng lao động. Năng suất thực sự đến từ việc giải phóng trí tuệ con người khỏi tác vụ lặp lại — để tập trung vào tư duy chiến lược và quản lý rủi ro." <span style="color:var(--text3); font-style: normal;">— MIT Sloan Research · 2025.</span>
+      </div>
+      <div class="body-text" style="margin-top:1rem; max-width:50em; font-size:1.05rem;">
+        Đa số CEO nghĩ AI = tool để <b>thay task</b> sẵn có. Sai. AI = đối tác tư duy để <b>tạo outcome mới</b> chưa từng có. Frame cũ: "tiết kiệm giờ". Frame mới: <b style="color:var(--red);">mở khả năng không có trước đây</b>.
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.8rem;">
+        <div style="background:var(--white); border:1.5px solid var(--border); border-top: 4px solid var(--red); border-radius: 12px; padding: 1.3rem 1.5rem;">
+          <div style="font-family:var(--font-display); font-size:0.7rem; font-weight:700; color:var(--red); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.6rem;">METHOD · 01</div>
+          <div style="font-family:var(--font-display); font-size:1.35rem; font-weight:700; color:var(--dark); margin-bottom:0.6rem; letter-spacing:0.2px;">Start with <span style="color:var(--red);">Outcome</span></div>
+          <div style="font-size:0.9rem; color:var(--text); line-height:1.65;">
+            Không hỏi "làm task X thế nào?". Bắt đầu bằng <b>outcome mong muốn</b>. Agent reverse-engineer path, trả 1-3-1. CEO chọn. Đi <b>từ kết quả lùi về công cụ</b>, không phải ngược lại.
+          </div>
+        </div>
+        <div style="background:var(--white); border:1.5px solid var(--border); border-top: 4px solid var(--gold); border-radius: 12px; padding: 1.3rem 1.5rem;">
+          <div style="font-family:var(--font-display); font-size:0.7rem; font-weight:700; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.6rem;">METHOD · 02</div>
+          <div style="font-family:var(--font-display); font-size:1.35rem; font-weight:700; color:var(--dark); margin-bottom:0.6rem; letter-spacing:0.2px;">Full <span style="color:var(--gold);">Context Window</span></div>
+          <div style="font-size:0.9rem; color:var(--text); line-height:1.65;">
+            Không chỉ prompt. Full context = <b>Input via API</b> (data, docs, metrics, history) <b>+ Human Context</b> (judgment, stakes, intuition). Agent chỉ co-think được khi thấy đủ cả hai.
+          </div>
+        </div>
+      </div>
+
+      <div class="shift-box" style="margin-top: 1.3rem; max-width: none;">
+        <b>Ngôn ngữ chung giữa CEO và agent</b> = Elon's 5-step Algorithm (ref S.08). CEO và agent cùng áp dụng một framework: chất vấn → xóa → đơn giản → tăng tốc → tự động. Shared framework = shared thinking.
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S26 · MONDAY ACTIONS -->
+<section class="slide" data-slide="26">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER IV</span> · ACTION</div>
+      <div class="s-num">S.26 / MONDAY</div>
+    </div>
+    <div class="slide-body">
+      <div class="section-label">3 việc sáng thứ 2 · The CEO's Mandate · in practice</div>
+      <h2 class="slide-title">Về là làm · <span class="accent">không "về rồi suy nghĩ tiếp"</span></h2>
+      <div style="margin-bottom: 1.2rem; padding: 0.9rem 1.2rem; background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 8px; font-size: 0.88rem; color: var(--text); line-height: 1.7; max-width: 60em;">
+        3 việc dưới đây ánh xạ trực tiếp vào <b>Chỉ thị CEO kỷ nguyên Agentic</b> — Executive Dossier · McKinsey + MIT Sloan: <b>(1) Thừa nhận quy mô</b> — đây là General-Purpose Technology, không phải công cụ tối ưu hóa. <b>(2) Vượt bẫy năng suất</b> — đừng đo thành công bằng "tiết kiệm 10%". <b>(3) Đồng bộ Chiến lược · Công nghệ · Tổ chức</b> — không được thiếu một nền tảng nào.
+      </div>
+      <div class="monday-list">
+        <div class="monday-item">
+          <div class="monday-num-circle">01</div>
+          <div>
+            <div class="monday-action">Vẽ OS Architecture của CHÍNH BẠN</div>
+            <div class="monday-desc"><span class="tag">45 phút</span>Tờ A3. Kẻ 3 ô: Lõi Tư Duy · Nguyên tắc · Công cụ. Điền cho doanh nghiệp của bạn. Bạn đang dùng Lõi Tư Duy gì? Default nào cho team? Tool stack 80/20 là gì?</div>
+          </div>
+        </div>
+        <div class="monday-item">
+          <div class="monday-num-circle">02</div>
+          <div>
+            <div class="monday-action">Chọn 1 chức năng để xây agent đầu tiên</div>
+            <div class="monday-desc"><span class="tag">30 phút</span>Đi dọc chuỗi giá trị Porter. Chức năng nào lặp lại nhiều nhất, ít rủi ro nhất, output đo được nhất? Chọn 1. Đừng chọn 3. Đừng chọn "khi nào có thời gian."</div>
+          </div>
+        </div>
+        <div class="monday-item">
+          <div class="monday-num-circle">03</div>
+          <div>
+            <div class="monday-action">Áp dụng 1-3-1 vào cuộc họp tiếp theo</div>
+            <div class="monday-desc"><span class="tag">1 email</span>Gửi team trước cuộc họp tiếp theo: "Mọi đề xuất từ hôm nay phải theo format 1 vấn đề · 3 giải pháp · 1 đề xuất." Default mới. Hiệu lực ngay.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN</div>
+      <div>AIVN SUMMIT #01</div>
+    </div>
+  </div>
+</section>
+
+<!-- S27 · CLOSING -->
+<section class="slide closing" data-slide="27">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">TIER IV</span> · CLOSE</div>
+      <div class="s-num">S.27 / CLOSING</div>
+    </div>
+    <div class="slide-body">
+      <div class="closing-quote">
+        <span class="break">Hệ điều hành tư duy</span>
+        <span class="break"><em>không tải xuống</em>.</span>
+        <span class="break">CEO <em>tự code</em>.</span>
+      </div>
+      <div class="closing-sig">
+        <span class="name">Quang Nguyễn</span> · PATI Group · AIVN Summit #01
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S28 · Q&A -->
+<section class="slide bg-light" data-slide="28">
+  <div class="slide-inner">
+    <div class="slide-meta">
+      <div><span class="tier-badge">END</span></div>
+      <div class="s-num">S.28 / CONNECT</div>
+    </div>
+    <div class="slide-body">
+      <div class="qa-layout">
+        <div class="qa-left">
+          <h1 class="qa-title"><em>Q &amp; A</em></h1>
+          <div class="qa-subtitle"><b>Welcome for Feedback.</b> Câu hỏi khó được khuyến khích. <em>Case thất bại</em> của bạn còn quý hơn case thành công. PATI Group vẫn đang trong quá trình học hỏi từ các đồng môn, các anh chị 🤡.</div>
+        </div>
+        <div>
+          <div class="section-label">Kết nối · Continue the conversation</div>
+          <ul class="contact-list">
+            <li>
+              <div class="contact-label">Company</div>
+              <div class="contact-value">PATI Group</div>
+            </li>
+            <li>
+              <div class="contact-label">Speaker</div>
+              <div class="contact-value">Quang Nguyễn</div>
+            </li>
+            <li>
+              <div class="contact-label">Deck</div>
+              <div class="contact-value mono">patigroup.github.io/<br>thinking-os-aivn01</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div><span class="brand">THINKING OS</span> · QUANG NGUYỄN · PATI GROUP</div>
+      <div>AIVN SUMMIT #01 · 25—26.04.2026</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+let currentSlide = 1;
+const totalSlides = 28;
+
+function showSlide(n) {
+  if (n < 1) n = totalSlides;
+  if (n > totalSlides) n = 1;
+  currentSlide = n;
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  const slide = document.querySelector('[data-slide="' + n + '"]');
+  if (slide) slide.classList.add('active');
+  document.getElementById('current-slide').textContent = String(n).padStart(2, '0');
+  document.getElementById('progress').style.width = ((n / totalSlides) * 100) + '%';
+  try { history.replaceState(null, '', '#' + n); } catch (e) { /* preview iframe context doesn't allow replaceState */ }
+}
+
+function nextSlide() { showSlide(currentSlide + 1); }
+function prevSlide() { showSlide(currentSlide - 1); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
+  else if (e.key === 'Home') { e.preventDefault(); showSlide(1); }
+  else if (e.key === 'End') { e.preventDefault(); showSlide(totalSlides); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (document.fullscreenElement) { document.exitFullscreen(); }
+    else { document.documentElement.requestFullscreen(); }
+  }
+});
+
+document.querySelectorAll('.slide').forEach(s => {
+  s.addEventListener('click', (e) => {
+    if (!e.target.closest('.controls') && !e.target.closest('a')) {
+      const x = e.clientX;
+      const w = window.innerWidth;
+      if (x > w / 2) nextSlide(); else prevSlide();
+    }
+  });
+});
+
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#', '');
+  const n = parseInt(hash);
+  if (n && n >= 1 && n <= totalSlides) showSlide(n);
+});
+</script>
+
+</body>
+</html>
